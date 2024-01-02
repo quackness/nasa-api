@@ -45,6 +45,28 @@ document.addEventListener('DOMContentLoaded', function () {
       let astroidsResponse = await responseAsteroids.json();
       console.log(astroidsResponse);
       //config the date picker
+      function handleFeedData({ element_count, near_earth_objects }) {
+        Object.keys(near_earth_objects).map(date => {
+          near_earth_objects[date].map(astroid => {
+            const id = astroid.id;
+            const name = astroid.name;
+            const dangerous = astroid.is_potentially_hazardous_asteroid;
+            const magnitude = astroid.absolute_magnitude_h;
+            const minSize = astroid.estimated_diameter.meters.estimated_diameter_min;
+            const maxSize = astroid.estimated_diameter.meters.estimated_diameter_max;
+            const test = astroid.close_approach_data;
+            console.log("test", test)
+            const close_approach_data = astroid.close_approach_data.shift();
+            console.log("close_approach_data", close_approach_data)
+
+
+
+
+
+          })
+        })
+      }
+      handleFeedData(astroidsResponse);
     }
     console.log(this.value)
     getAsteroids()
