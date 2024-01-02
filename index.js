@@ -25,7 +25,6 @@ async function getNasaPictue() {
 getNasaPictue();
 
 //asteroids feed api
-//example call
 
 async function getAsteroids() {
   let responseAsteroids = await fetch('https://api.nasa.gov/neo/rest/v1/feed?start_date=2024-01-01&end_date=2024-01-02&api_key=Z6B0Pbqt2FldR7fPdreYIZLBXDaAnZGdKZ4kxicX');
