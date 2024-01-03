@@ -46,8 +46,11 @@ document.addEventListener('DOMContentLoaded', function () {
       console.log(astroidsResponse);
       //config the date picker
       function handleFeedData({ element_count, near_earth_objects }) {
+        console.log("element_count", element_count);
+        let count = 0;
         Object.keys(near_earth_objects).map(date => {
           near_earth_objects[date].map(astroid => {
+            count++;
             const id = astroid.id;
             const name = astroid.name;
             const dangerous = astroid.is_potentially_hazardous_asteroid;
@@ -58,17 +61,15 @@ document.addEventListener('DOMContentLoaded', function () {
             console.log("test", test)
             const close_approach_data = astroid.close_approach_data.shift();
             console.log("close_approach_data", close_approach_data)
-
-
-
-
-
+            const miss_distance = close_approach_data.miss_distance.kilometers;
+            console.log(">>", id, miss_distance, maxSize)
           })
         })
+        console.log("count", count);
       }
       handleFeedData(astroidsResponse);
     }
-    console.log(this.value)
+    // console.log(this.value)
     getAsteroids()
   });
 });
