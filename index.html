@@ -11,14 +11,22 @@
 </head>
 
 <body>
+  <nav>
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo">NASA API Challenge</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="sass.html"></a>APOD</li>
+        <li><a href="badges.html">NeoWs</a></li>
+      </ul>
+    </div>
+  </nav>
   <div class="container">
-    <h1>NASA API CHALLENGE</h1>
     <h2>APOD: Astronomy Picture Of The Day</h2>
     <h4>One of the most popular websites at NASA is the Astronomy Picture of the Day. In fact, this website is one of
       the most popular websites across all federal agencies. It has the popular appeal of a Justin Bieber video. This
       endpoint structures the APOD imagery and associated metadata so that it can be repurposed for other applications.
     </h4>
-    <div class="preloader-wrapper big active" id="preloader">
+    <div class="preloader-wrapper big active" id="preloaderPicture">
       <div class="spinner-layer spinner-blue-only">
         <div class="circle-clipper left">
           <div class="circle"></div>
@@ -37,8 +45,17 @@
     <hr />
     <h2>Asteroids - NeoWs</h2>
     <section id="astroids">
-      <p>Pick date:</p>
-      <input type="text" class="datepicker" id="start">
+
+      <div class="row">
+        <div class="col s12">
+          <div class="row">
+            <div class="input-field col s12">
+              <input type="text" class="datepicker" id="start">
+              <label for="start">Pick a start date</label>
+            </div>
+          </div>
+        </div>
+      </div>
       <table class="stripped">
         <thead>
           <tr>

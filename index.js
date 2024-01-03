@@ -4,10 +4,10 @@ const apiKey = 'Z6B0Pbqt2FldR7fPdreYIZLBXDaAnZGdKZ4kxicX';
 const apodUrl = 'https://api.nasa.gov/planetary/apod';
 
 async function getNasaPictue() {
-  document.querySelector('#preloader').style.display = 'block';
+  document.querySelector('#preloaderPicture').style.display = 'block';
   let result = await fetch(`${apodUrl}?api_key=${apiKey}`);
   let response = await result.json();
-  document.querySelector('#preloader').style.display = 'none';
+  document.querySelector('#preloaderPicture').style.display = 'none';
   //console.log(response);
   // return response;
   const explanationDiv = document.createElement('div');
