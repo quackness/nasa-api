@@ -27,7 +27,9 @@ getNasaPictue();
 //asteroids feed api
 //const feedUrl = 'https://api.nasa.gov/neo/rest/v1/feed?start_date=2015-09-07&end_date=2015-09-08&api_key=DEMO_KEY';
 const startInput = document.querySelector('#start');
-console.log(startInput);
+const astroFeedElement = document.querySelector('#astro-feed');
+console.log(astroFeedElement);
+
 
 document.addEventListener('DOMContentLoaded', function () {
   const elems = document.querySelectorAll('.datepicker');
@@ -45,11 +47,12 @@ document.addEventListener('DOMContentLoaded', function () {
       let astroidsResponse = await responseAsteroids.json();
       console.log(astroidsResponse);
       //config the date picker
-      function handleFeedData({ element_count, near_earth_objects }) {
+
+      function handleFeedData({ element_count, near_earth_objects }, astroFeedElement) {
         console.log("element_count", element_count);
         let count = 0;
-        Object.keys(near_earth_objects).map(date => {
-          near_earth_objects[date].map(astroid => {
+        astroFeedElement.innerHTML = Object.keys(near_earth_objects).map(date => {
+          return near_earth_objects[date].map(astroid => {
             count++;
             const id = astroid.id;
             const name = astroid.name;
@@ -63,11 +66,25 @@ document.addEventListener('DOMContentLoaded', function () {
             console.log("close_approach_data", close_approach_data)
             const miss_distance = close_approach_data.miss_distance.kilometers;
             console.log(">>", id, miss_distance, maxSize)
-          })
-        })
-        console.log("count", count);
+            return `
+            <tr>
+            <td>${id}</td>
+            <td>${name}</td>
+            <td>${dangerous ? 'YES' : 'NO'}</td>
+            <td>${magnitude}</td>
+            <td>${minSize}</td>
+            <td>${maxSize}</td>
+            <td>${miss_distance}</td>
+            <td>${date}</td>
+            </tr>
+            `
+          }).join("");
+          // console.log("?", astroidContent)
+          // return `<tr>${astroidContent}</tr>`
+        }).join("");
+        // console.log("count", count);
       }
-      handleFeedData(astroidsResponse);
+      handleFeedData(astroidsResponse, astroFeedElement);
     }
     // console.log(this.value)
     getAsteroids()
