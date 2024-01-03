@@ -21,11 +21,22 @@
     </div>
   </nav>
   <div class="container">
-    <h2>APOD: Astronomy Picture Of The Day</h2>
-    <h4>One of the most popular websites at NASA is the Astronomy Picture of the Day. In fact, this website is one of
+    <h2> APOD: Astronomy Picture Of The Day </h2>
+    <h5>One of the most popular websites at NASA is the Astronomy Picture of the Day. In fact, this website is one of
       the most popular websites across all federal agencies. It has the popular appeal of a Justin Bieber video. This
       endpoint structures the APOD imagery and associated metadata so that it can be repurposed for other applications.
-    </h4>
+    </h5>
+    <p id="datetime"> Today is: </p>
+    <script>
+      // Get current date and time
+      var now = new Date();
+
+      var datetime = now.toISOString().split('T')[0];
+
+      // Insert date and time into HTML
+      document.getElementById("datetime").append(datetime);
+    </script>
+
     <div class="preloader-wrapper big active" id="preloaderPicture">
       <div class="spinner-layer spinner-blue-only">
         <div class="circle-clipper left">
@@ -42,10 +53,14 @@
     <div id="nasa">
 
     </div>
-    <hr />
     <h2>Asteroids - NeoWs</h2>
-    <section id="astroids">
+    <h5>
+      NeoWs (Near Earth Object Web Service) is a RESTful web service for near earth Asteroid information. With NeoWs a
+      user can: search for Asteroids based on their closest approach date to Earth, lookup a specific Asteroid with its
+      NASA JPL small body id, as well as browse the overall data-set.
+    </h5>
 
+    <section id="astroids">
       <div class="row">
         <div class="col s12">
           <div class="row">
@@ -55,6 +70,9 @@
             </div>
           </div>
         </div>
+      </div>
+      <div class="progress">
+        <div class="indeterminate"></div>
       </div>
       <table class="stripped">
         <thead>
@@ -75,6 +93,22 @@
 
     </section>
   </div>
+  <footer class="page-footer">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+
+        </div>
+        <div class="col l4 offset-l2 s12">
+
+
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+
 </body>
 
 </html>

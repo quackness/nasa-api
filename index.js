@@ -20,9 +20,10 @@ async function getNasaPictue() {
   //console.log(image);
   // <img src="pic_trulli.jpg" alt="Italian Trulli">
   const nasaResponse = document.getElementById("nasa");
-  nasaResponse.appendChild(explanationDiv);
-  nasaResponse.appendChild(dateDiv);
   nasaResponse.appendChild(image);
+  nasaResponse.appendChild(explanationDiv);
+
+
 }
 getNasaPictue();
 
@@ -32,7 +33,7 @@ const startInput = document.querySelector('#start');
 const astroFeedElement = document.querySelector('#astro-feed');
 console.log(astroFeedElement);
 
-
+document.querySelector('.progress').style.display = 'none';
 document.addEventListener('DOMContentLoaded', function () {
   const elems = document.querySelectorAll('.datepicker');
   const instances = M.Datepicker.init(elems, {
@@ -44,12 +45,13 @@ document.addEventListener('DOMContentLoaded', function () {
   startInput.addEventListener('change', function () {
     const startDateValue = this.value;
     async function getAsteroids() {
+      document.querySelector('.progress').style.display = 'block';
       let responseAsteroids = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDateValue}&api_key=${apiKey}`);
       //console.log(responseAsteroids);
       let astroidsResponse = await responseAsteroids.json();
       console.log(astroidsResponse);
       //config the date picker
-
+      document.querySelector('.progress').style.display = 'none';
       function handleFeedData({ element_count, near_earth_objects }, astroFeedElement) {
         console.log("element_count", element_count);
         let count = 0;
